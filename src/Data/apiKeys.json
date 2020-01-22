@@ -1,0 +1,12 @@
+  
+{
+    "firebaseConfig" : {
+        "apiKey": "AIzaSyCIFwg2bDooOZfXkCy-jkARcDMAROjh6Gc",
+        "authDomain": "kroger-f1275.firebaseapp.com",
+        "databaseURL": "https://kroger-f1275.firebaseio.com",
+        "projectId": "kroger-f1275",
+        "storageBucket": "kroger-f1275.appspot.com",
+        "messagingSenderId": "772577567307",
+        "appId": "1:772577567307:web:86f13375bf9c9c24abe3ce"
+  }
+}
