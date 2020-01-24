@@ -21,7 +21,7 @@ const PublicRoute = ({ component: Component, authed, ...rest}) => {
 const PrivateRoute = ({ component: Component, authed, ...rest}) => {
   const routeChecker = props => ( authed === true
     ? (<Component {...props} authed={authed} />)
-    : (<Redirect to={{ pathname: '/Home', state: { from: props.location }}}/>)
+    : (<Redirect to={{ pathname: '/Auth', state: { from: props.location }}}/>)
   );
   return <Route {...rest} render={props => routeChecker(props)}/>
 };
@@ -78,10 +78,9 @@ class App extends React.Component {
           {/* alternate auth */}
           {/* <MyNavbar authed={authed} /> */}
             <Switch>
-              <PublicRoute path='/Home' component={Home} authed={this.state.authed}/>
               <PublicRoute path='/Auth' component={Auth} authed={this.state.authed}/>
               <PrivateRoute path='/MyHome' component={Home} authed={this.state.authed}/>
-              <Redirect from="*" to="/Home"/>
+              <Redirect from="*" to="/Auth"/>
             </Switch>
         </React.Fragment>
       </BrowserRouter>
