@@ -13,18 +13,15 @@ const CheckUser = () => new Promise( (resolve, reject) =>  {
     .catch(err => console.error(err, 'check user function failed'));
 })
 
-// const CreateUser = () => {
-//     const userName = firebase.auth().currentUser.uid.split(' ')
-//     const userInfo = {
-//         FirebaseId : firebase.auth().currentUser.uid,
-//         DefaultLocationId : null,
-//         FirstName : userName[0],
-//         LastName : userName[1]
-//     }
-//     axios.post(`${baseURL}/user/createuser`, userInfo)
-// }
 const CreateUser = () => {
-    console.log('You just tried to create a user')
+    const userName = firebase.auth().currentUser.displayName.split(' ')
+    const userInfo = {
+        FirebaseId : firebase.auth().currentUser.uid,
+        DefaultLocationId : null,
+        FirstName : userName[0],
+        LastName : userName[1]
+    }
+    axios.post(`${baseURL}/user/createuser`, userInfo)
 }
 
 export default {
