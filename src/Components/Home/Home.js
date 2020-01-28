@@ -16,6 +16,14 @@ class Home extends Component {
     firebase.auth().signOut();
   }  
 
+  
+  logMeIn = (e) => {
+    // e.preventDefault();
+    const provider = new firebase.auth.GoogleAuthProvider();
+    firebase.auth().signInWithPopup(provider)
+      .then();
+  }
+
   getValues = () => {
     // make API call
     values.getValues()
@@ -37,7 +45,9 @@ class Home extends Component {
     return (
       <div className="Home">
           <button onClick={this.logMeOut}>Log Out</button>
+          <button onClick={this.logMeIn}>Log In</button>
           <button onClick={this.getValues}>Load Data</button>
+         {this.props.authed ? <h2>{firebase.auth().currentUser.displayName.split(' ')[1]}</h2>: <h2>no auth dog</h2>}
           <div className="productContainer">{this.showAllValues()}</div>
       </div>
     );
