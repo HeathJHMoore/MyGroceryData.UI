@@ -1,6 +1,6 @@
 import React from 'react';
 import './ProductCard.scss';
-import { Redirect } from 'react-router-dom';
+import { Redirect, Link, withRouter } from 'react-router-dom';
 
 class ProductCard extends React.Component {
 
@@ -25,7 +25,6 @@ class ProductCard extends React.Component {
                 <h2>Regular Price: ${this.props.product.productRegularPrice}</h2>
                 {this.props.product.productPromoPrice === 0 ? <h2>Not on Clearance</h2>: <h2>Clearance Price: ${this.props.product.productPromoPrice}</h2>}
                 <div className="productCardButtonContainer">
-                  {/* <Link className="productCardButton" to={productInfoPath}>View Product Statistics</Link> */}
                   <button className="productCardButton" onClick={this.GoToProductPage}>View Product Statistics</button>
                   <button onClick={this.AddToUserWatchlist} className="productCardButton">Add to Watchlist</button>
                 </div>
@@ -34,4 +33,4 @@ class ProductCard extends React.Component {
     }
 }
 
-export default ProductCard;
+export default withRouter(ProductCard);
