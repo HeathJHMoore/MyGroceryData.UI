@@ -36,9 +36,10 @@ class Home extends Component {
 
   showAllValues = () => {
     const myValues = [...this.state.displayValues];
-    return myValues.map((item) => {
+    const productCards = myValues.map((item) => {
       return <ProductCard product={item}/>
     })
+    return productCards
   }
 
   render () {

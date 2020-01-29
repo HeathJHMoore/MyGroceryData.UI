@@ -1,4 +1,5 @@
 import React from 'react'
+import './ProductDetails.scss';
 
 class ProductDetails extends React.Component {
 
@@ -8,8 +9,16 @@ class ProductDetails extends React.Component {
 
     render() {
         return (
-            <div>
-                This is the product details page
+            <div className=" productDetailContainer">
+                <div className="productDetailSection productDetailSectionOne">
+                    The first info will go in here
+                </div>
+                <div className="productDetailSection productDetailSectionTwo">
+                    The second info will go in here
+                </div>
+                <div className="productDetailSection productDetailSectionThree">
+                    The third info will go in here
+                </div>
             </div>
         )
     }

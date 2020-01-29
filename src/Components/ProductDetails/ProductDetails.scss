@@ -1,0 +1,21 @@
+.productDetailContainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    text-align: center;
+    .productDetailSection {
+        padding: 10px;
+    }
+    .productDetailSectionOne {
+        width: 48%;
+        border: solid 1px black;
+    }
+    .productDetailSectionTwo {
+        width: 48%;
+        border: solid 1px black;
+    }
+    .productDetailSectionThree {
+        width: 90%;
+        border: solid 1px black;
+    }
+}
