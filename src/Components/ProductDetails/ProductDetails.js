@@ -1,10 +1,19 @@
 import React from 'react'
 import './ProductDetails.scss';
+import ProductData from '../../Data/ProductData';
 
 class ProductDetails extends React.Component {
 
     state = {
+        ProductDetails : {}
+    }
 
+    componentDidMount() {
+        ProductData.GetProductDetails(this.props.match.params.productId)
+        .then(resp => {
+            this.setState({ProductDetails : resp})
+        })
+        .catch()
     }
 
     render() {
