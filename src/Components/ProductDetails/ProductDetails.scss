@@ -9,6 +9,13 @@
     .productDetailSectionOne {
         width: 48%;
         border: solid 1px black;
+        display: flex;
+        justify-content: space-evenly;
+        .productDetailSectionOneRow {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
     }
     .productDetailSectionTwo {
         width: 48%;

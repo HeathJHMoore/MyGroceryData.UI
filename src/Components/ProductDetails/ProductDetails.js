@@ -20,7 +20,14 @@ class ProductDetails extends React.Component {
         return (
             <div className=" productDetailContainer">
                 <div className="productDetailSection productDetailSectionOne">
-                    The first info will go in here
+                    <div className="productDetailSectionOneRow">
+                        <div id="productDetailImage"></div>
+                        {/* <img src={this.state.ProductDetails.imageURL} /> */}
+                    </div>
+                    <div className="productDetailSectionOneRow">
+                        <p>{this.state.ProductDetails.productName}</p>
+                        <p>{this.state.ProductDetails.priceToday}</p>
+                    </div>
                 </div>
                 <div className="productDetailSection productDetailSectionTwo">
                     <div className="productDetailSectionTwoRow">
@@ -40,7 +47,7 @@ class ProductDetails extends React.Component {
                         </div>
                         <div>
                             <h4>Time On Clearance</h4>
-                            <p>{this.state.ProductDetails.minPrice}</p>
+                            <p>{this.state.ProductDetails.timeOnClearance}%</p>
                         </div>
                     </div>
                 </div>
