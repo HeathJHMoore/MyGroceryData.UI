@@ -11,6 +11,10 @@ class Home extends Component {
     displayValues : []
   }
 
+  componentDidMount() {
+    this.getValues()
+  }
+
   logMeOut = (e) => {
     e.preventDefault();
     firebase.auth().signOut();
