@@ -8,18 +8,29 @@
     }
     .productDetailSectionOne {
         width: 48%;
-        border: solid 1px black;
+        // border: solid 1px black;
         display: flex;
         justify-content: space-evenly;
+        flex-wrap: wrap;
         .productDetailSectionOneRow {
             display: flex;
             flex-direction: column;
             justify-content: center;
+            #productDetailImage {
+                padding: 10px 5px;
+                height: 200px;
+                width: 300px;
+                background-position: center;
+                background-size: contain;
+                background-repeat: no-repeat;
+                overflow: visible;
+
+            }
         }
     }
     .productDetailSectionTwo {
         width: 48%;
-        border: solid 1px black;
+        // border: solid 1px black;
         display: flex;
         flex-wrap: wrap;
         justify-content: space-evenly;
@@ -28,10 +39,11 @@
             padding: 0px 10px;
             display: flex;
             flex-direction: column;
+            justify-content: center;
         }
     }
     .productDetailSectionThree {
         width: 90%;
-        border: solid 1px black;
+        // border: solid 1px black;
     }
 }

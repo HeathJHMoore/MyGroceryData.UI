@@ -12,6 +12,7 @@ class ProductDetails extends React.Component {
         ProductData.GetProductDetails(this.props.match.params.productId)
         .then(resp => {
             this.setState({ProductDetails : resp})
+            document.getElementById("productDetailImage").style.backgroundImage = `url(${resp.imageURL})`
         })
         .catch()
     }
@@ -25,25 +26,28 @@ class ProductDetails extends React.Component {
                         {/* <img src={this.state.ProductDetails.imageURL} /> */}
                     </div>
                     <div className="productDetailSectionOneRow">
-                        <p>{this.state.ProductDetails.productName}</p>
-                        <p>{this.state.ProductDetails.priceToday}</p>
+                        <h3>{this.state.ProductDetails.productName}</h3>
+                        <div>
+                            <h4>Today's Price</h4>
+                            <p>${this.state.ProductDetails.priceToday}</p>
+                        </div>
                     </div>
                 </div>
                 <div className="productDetailSection productDetailSectionTwo">
                     <div className="productDetailSectionTwoRow">
                         <div>
                             <h4>Maximum Price</h4>
-                            <p>{this.state.ProductDetails.maxPrice}</p>
+                            <p>${this.state.ProductDetails.maxPrice}</p>
                         </div>
                         <div>
                             <h4>Minimum Price</h4>
-                            <p>{this.state.ProductDetails.minPrice}</p>
+                            <p>${this.state.ProductDetails.minPrice}</p>
                         </div>
                     </div>
                     <div className="productDetailSectionTwoRow">
                         <div>
                             <h4>Average Price</h4>
-                            <p>{this.state.ProductDetails.maxPrice}</p>
+                            <p>${this.state.ProductDetails.maxPrice}</p>
                         </div>
                         <div>
                             <h4>Time On Clearance</h4>

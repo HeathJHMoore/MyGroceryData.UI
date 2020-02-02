@@ -37,7 +37,28 @@ const GetProductImage = (productId, locationId) => new Promise ( (resolve, rejec
         // GET request to retrieve image URL for specific product
         axios.get(`${krogerProductURL}/${productId}?filter.locationId=${locationId}`, postConfigProductRequest)
         .then((productresponse) => {
-            resolve(productresponse.data.data.images[0].sizes[2].url)
+            // Kroger API returns a random order of images from small to large in an array
+            // so I had to create the below foreach loop to make sure I was always pulling back the large image in the array
+            // If the item doesn't have a large image, then I pull back the medium image
+            let ImageURL = {
+                Large : undefined,
+                Medium : undefined
+            };
+            productresponse.data.data.images[0].sizes.forEach((image) => {
+                console.log(image)
+                if (image.size === 'large') {
+                    ImageURL.Large = image.url;
+                }
+                if (image.size === 'medium') {
+                    ImageURL.Medium = image.url 
+                }
+            })
+            if (ImageURL.Large === undefined) {
+                resolve(ImageURL.Medium)
+            }
+            else {
+                resolve(ImageURL.Large)
+            }
         })
         .catch(err => reject(err))
     })
