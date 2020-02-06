@@ -1,11 +1,14 @@
 import React from 'react'
 import './ProductDetails.scss';
 import ProductData from '../../Data/ProductData';
+import BarChart from '../BarChart/BarChart';
+import moment from 'moment';
 
 class ProductDetails extends React.Component {
 
     state = {
-        ProductDetails : {}
+        ProductDetails : {},
+        SevenDayTrendedData : []
     }
 
     componentDidMount() {
@@ -13,11 +16,25 @@ class ProductDetails extends React.Component {
         .then(resp => {
             this.setState({ProductDetails : resp})
             document.getElementById("productDetailImage").style.backgroundImage = `url(${resp.imageURL})`
+            ProductData.GetSevenDayTrend('2019-12-18', this.props.match.params.productId)
+            .then((trendedData) => {
+                console.log(trendedData)
+                this.setState({SevenDayTrendedData : trendedData})
+
+            })
+            .catch(err => console.error('error in getting seven day trended data'))
         })
         .catch()
     }
 
     render() {
+
+        const sevenDayTrendDataPoints = this.state.SevenDayTrendedData.map((datapoint) => {
+            return datapoint.Price
+        })
+        const sevenDayTrendDataLabels = this.state.SevenDayTrendedData.map((datapoint) => {
+            return moment(datapoint.CaptureDate).format('MM-DD-YYYY');
+        })
         return (
             <div className=" productDetailContainer">
                 <div className="productDetailSection productDetailSectionOne">
@@ -56,7 +73,8 @@ class ProductDetails extends React.Component {
                     </div>
                 </div>
                 <div className="productDetailSection productDetailSectionThree">
-                    The third info will go in here
+                    <div className="productDetailSectionThreeRow"><BarChart dataLabels={sevenDayTrendDataLabels} dataPoints={sevenDayTrendDataPoints}/></div>
+                    <div className="productDetailSectionThreeRow"><BarChart dataLabels={sevenDayTrendDataLabels} dataPoints={sevenDayTrendDataPoints}/></div>
                 </div>
             </div>
         )

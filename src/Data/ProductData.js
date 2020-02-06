@@ -45,7 +45,6 @@ const GetProductImage = (productId, locationId) => new Promise ( (resolve, rejec
                 Medium : undefined
             };
             productresponse.data.data.images[0].sizes.forEach((image) => {
-                console.log(image)
                 if (image.size === 'large') {
                     ImageURL.Large = image.url;
                 }
@@ -92,6 +91,16 @@ const GetProductDetails = (productId) => new Promise( (resolve, reject) => {
     .catch(err => reject(err))
 })
 
+// This function returns a seven day view of price action for a particular product
+const GetSevenDayTrend = (startDate, productId) => new Promise((resolve, reject) => {
+    axios.get(`${localBaseURL}/values/${firebase.auth().currentUser.uid}/${productId}/${startDate}/seven-day-trend`)
+    .then((resp) => {
+        resolve((resp.data))
+    })
+    .catch(err => reject('couldnt get seven day trend'))
+})
+
 export default {
-    GetProductDetails
+    GetProductDetails,
+    GetSevenDayTrend
 }
