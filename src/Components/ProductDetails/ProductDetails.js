@@ -64,7 +64,7 @@ class ProductDetails extends React.Component {
                     <div className="productDetailSectionTwoRow">
                         <div>
                             <h4>Average Price</h4>
-                            <p>${this.state.ProductDetails.maxPrice}</p>
+                            <p>${this.state.ProductDetails.averagePrice}</p>
                         </div>
                         <div>
                             <h4>Time On Clearance</h4>
