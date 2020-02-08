@@ -11,6 +11,10 @@ class Home extends Component {
     displayValues : []
   }
 
+  componentDidMount() {
+    this.getValues()
+  }
+
   logMeOut = (e) => {
     e.preventDefault();
     firebase.auth().signOut();
@@ -36,9 +40,10 @@ class Home extends Component {
 
   showAllValues = () => {
     const myValues = [...this.state.displayValues];
-    return myValues.map((item) => {
+    const productCards = myValues.map((item) => {
       return <ProductCard product={item}/>
     })
+    return productCards
   }
 
   render () {

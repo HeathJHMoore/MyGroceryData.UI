@@ -12,7 +12,6 @@ class ProductCard extends React.Component {
     GoToProductPage = () => {
         const productInfoPath = `/ProductDetails/${this.props.product.productId}`
         this.props.history.push(productInfoPath)
-        return <Redirect to={productInfoPath}/>
     }
 
     render() {
