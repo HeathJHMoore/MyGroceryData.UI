@@ -100,7 +100,16 @@ const GetSevenDayTrend = (startDate, productId) => new Promise((resolve, reject)
     .catch(err => reject('couldnt get seven day trend'))
 })
 
+const AddtoUserWatchlist = (productId) => new Promise((resolve, reject) => {
+    axios.post(`${localBaseURL}/values/${firebase.auth().currentUser.uid}/${productId}/add-to-watchlist`)
+    .then(resp => {
+        resolve('you successfully inserted!')
+    })
+    .catch(reject('it messed up'))
+})
+
 export default {
     GetProductDetails,
-    GetSevenDayTrend
+    GetSevenDayTrend,
+    AddtoUserWatchlist
 }

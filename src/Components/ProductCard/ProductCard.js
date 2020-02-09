@@ -1,12 +1,17 @@
 import React from 'react';
 import './ProductCard.scss';
 import { Redirect, Link, withRouter } from 'react-router-dom';
+import ProductData from '../../Data/ProductData';
 
 class ProductCard extends React.Component {
 
     AddToUserWatchlist = () => {
-        // create function in userData.js that adds a specific product to user watchlist using productId and firebaseId
-        console.error("you tried to add a product to the watchlist")
+        // create function in userData.js that adds a specific product
+        ProductData.AddtoUserWatchlist(this.props.product.productId)
+            .then(resp => {
+                console.log(resp)
+            })
+            .catch()
     }
 
     GoToProductPage = () => {
