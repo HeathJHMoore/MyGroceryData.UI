@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
 import values from '../APIRequests/values';
-import './Home.scss';
 import firebase from 'firebase/app';
 import 'firebase/auth';
 import ProductCard from '../ProductCard/ProductCard';
 
-class Home extends Component {
+class Watchlist extends Component {
 
   state = {
     displayValues : []
@@ -30,7 +29,7 @@ class Home extends Component {
 
   getValues = () => {
     // make API call
-    values.getValues()
+    values.getWatchlistValues()
       .then((resp) => {
         let myNewValues = [...resp];
         this.setState({displayValues : myNewValues});
@@ -46,18 +45,12 @@ class Home extends Component {
     return productCards
   }
 
-  sendToWatchlist = () => {
-    const watchlistPath = `/MyWatchlist`
-    this.props.history.push(watchlistPath)
-  }
-
   render () {
     return (
       <div className="Home">
           <button onClick={this.logMeOut}>Log Out</button>
           <button onClick={this.logMeIn}>Log In</button>
           <button onClick={this.getValues}>Load Data</button>
-          <button onClick={this.sendToWatchlist}>My Watchlist</button>
          {this.props.authed ? <h2>{firebase.auth().currentUser.displayName.split(' ')[1]}</h2>: <h2>no auth dog</h2>}
           <div className="productContainer">{this.showAllValues()}</div>
       </div>
@@ -65,4 +58,4 @@ class Home extends Component {
   }
 }
 
-export default Home;
+export default Watchlist;

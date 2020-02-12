@@ -13,6 +13,17 @@ const getValues = () => new Promise((resolve, reject) => {
       });
   });
 
+const getWatchlistValues = () => new Promise((resolve, reject) => {
+  axios.get(`${baseUrl}/values/${firebase.auth().currentUser.uid}/watchlist`)
+  .then((result) => {
+    resolve(result.data);
+  })
+  .catch((error) => {
+    reject(error)
+  })
+});
+
   export default {
-      getValues
+      getValues,
+      getWatchlistValues
   }

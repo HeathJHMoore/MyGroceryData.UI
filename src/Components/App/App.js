@@ -6,6 +6,7 @@ import {BrowserRouter, Route, Redirect, Switch} from 'react-router-dom';
 import Auth from '../Auth/Auth';
 import Home from '../Home/Home';
 import ProductDetail from '../ProductDetails/ProductDetails';
+import Watchlist from '../Watchlist/Watchlist';
 
 import fbConnection from '../../Data/connection';
 
@@ -81,6 +82,7 @@ class App extends React.Component {
             <Switch>
               <PublicRoute path='/Auth' component={Auth} authed={this.state.authed}/>
               <PrivateRoute path='/MyHome' component={Home} authed={this.state.authed}/>
+              <PrivateRoute path='/MyWatchlist' component={Watchlist} authed={this.state.authed}/>
               <PrivateRoute path='/ProductDetails/:productId' component={ProductDetail} authed={this.state.authed}/>
               <Redirect from="*" to="/Auth"/>
             </Switch>
